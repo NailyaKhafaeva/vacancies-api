@@ -1,9 +1,11 @@
 import { User } from 'src/user/user.entity';
+import { VacancyResponse } from 'src/vacancy-response/vacancy-response.entity';
 import {
     Column,
     CreateDateColumn,
     Entity,
     ManyToOne,
+    OneToMany,
     PrimaryGeneratedColumn,
     UpdateDateColumn,
 } from 'typeorm';
@@ -24,6 +26,9 @@ export class Vacancy {
 
     @ManyToOne(() => User, (user) => user.id, { eager: true })
     userId: number;
+
+    @OneToMany(() => VacancyResponse, (vacancyResponse) => vacancyResponse.id)
+    vacancyResponses: VacancyResponse[];
 
     @CreateDateColumn()
     createdAt: Date;

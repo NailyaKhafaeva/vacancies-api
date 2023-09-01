@@ -1,3 +1,4 @@
+import { VacancyResponse } from 'src/vacancy-response/vacancy-response.entity';
 import { Vacancy } from 'src/vacancy/vacancy.entity';
 import {
     Entity,
@@ -5,6 +6,7 @@ import {
     PrimaryGeneratedColumn,
     CreateDateColumn,
     OneToMany,
+    ManyToOne,
 } from 'typeorm';
 
 @Entity()
@@ -23,6 +25,9 @@ export class User {
 
     @OneToMany(() => Vacancy, (vacancy) => vacancy.vacancyName)
     vacancies: Vacancy[];
+
+    @ManyToOne(() => VacancyResponse, (vacancyResponse) => vacancyResponse.id)
+    vacancyResponses: VacancyResponse[];
 
     @CreateDateColumn()
     createdAt: Date;

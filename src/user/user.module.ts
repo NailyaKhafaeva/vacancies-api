@@ -4,9 +4,10 @@ import { UserController } from './user.controller';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { User } from './user.entity';
 import { Vacancy } from 'src/vacancy/vacancy.entity';
+import { VacancyResponse } from 'src/vacancy-response/vacancy-response.entity';
 
 @Module({
-    imports: [TypeOrmModule.forFeature([User, Vacancy])],
+    imports: [TypeOrmModule.forFeature([User, Vacancy, VacancyResponse])],
     providers: [UserService],
     controllers: [UserController],
 })
